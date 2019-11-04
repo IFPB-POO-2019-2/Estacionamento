@@ -16,8 +16,11 @@ public class App {
                 2015, 4));
         estacionamento.adicionar(new Carro("ABC-3214","Fiat",
                 2000,5));
+        //Não irá inserir, pois a placa já está cadastrada
+        estacionamento.adicionar(new Carro("ABC-3214","Fiat",
+                2000,5));
 
-        System.out.println(estacionamento.buscar("ABC-4321"));
+        System.out.println(estacionamento.contTipo(Carro.class));
 
         System.out.println(Arrays.toString(estacionamento.getVeiculos()));
 

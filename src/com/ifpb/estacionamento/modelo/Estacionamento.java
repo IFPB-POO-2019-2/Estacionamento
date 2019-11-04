@@ -14,13 +14,20 @@ public class Estacionamento {
     private int quantidade;
 
     public Estacionamento(){
-        veiculos = new Veiculo[100];
+        veiculos = new Veiculo[10];
         quantidade = 0;
     }
 
     public boolean adicionar(Veiculo veiculo){
         if(quantidade == veiculos.length){
-            //indica que o array está lotado
+            /*indica que o array está lotado
+            Vamos incrementa o array em 10 posições
+            */
+            veiculos = Arrays.copyOf(veiculos,
+                    veiculos.length+10);
+        }
+
+        if(buscar(veiculo.getPlaca())!=null){
             return false;
         }else{
             veiculos[quantidade++] = veiculo;
@@ -54,6 +61,18 @@ public class Estacionamento {
             }
         }
         return null;
+    }
+
+    public int contTipo(Class classe){
+        int cont = 0;
+
+        for(int i=0;i<quantidade;i++){
+            if(veiculos[i].getClass() == classe){
+                cont++;
+            }
+        }
+
+        return cont;
     }
 
 }
