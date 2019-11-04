@@ -1,5 +1,7 @@
 package com.ifpb.estacionamento.modelo;
 
+import java.util.Arrays;
+
 public class Estacionamento {
 
     /*
@@ -26,5 +28,32 @@ public class Estacionamento {
         }
     }
 
+    public Veiculo[] getVeiculos(){
+        return Arrays.copyOf(veiculos,quantidade);
+        //outra solução
+//        return Arrays.copyOfRange(veiculos, 0, quantidade);
+    }
+
+    public boolean remover(Veiculo veiculo){
+        for(int i=0; i<quantidade;i++){
+            if(veiculo.equals(veiculos[i])){
+                for(int j=i;j<quantidade-1;j++){
+                    veiculos[j] = veiculos[j+1];
+                }
+                quantidade--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Veiculo buscar(String placa){
+        for(int i=0; i<quantidade;i++){
+            if(veiculos[i].getPlaca().equals(placa)){
+                return veiculos[i];
+            }
+        }
+        return null;
+    }
 
 }
